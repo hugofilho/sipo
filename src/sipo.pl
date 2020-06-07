@@ -191,13 +191,13 @@ while (my $fields = $csv->getline($data)) {
                );
   
   
-   my $strMutacao5 = ",Mutacao Base Nitrogenada - Origem Materna ou Paterna";
-   my $strMutacao6 = ",Mutacao Base Nitrogenada - Origem Materna e Paterna";
-   my $strMutacao7 = ",Mutacao Base Nitrogenada - Origem Materna";
-   my $strMutacao8 = ",Mutacao Base Nitrogenada - Origem Paterna";
-   my $strMutacao9 = ",Transicao - Purina/Purina";
-   my $strMutacao10 = ",Transversao - Purina/Pirimidina";
-   my $strMutacao15 = ",Transicao - Pirimidina/Pirimidina";
+   my $strMutacao1 = ",Mutation NB - Paternal or Maternal";   
+   my $strMutacao2 = ",Mutation NB - Maternal Origin";
+   my $strMutacao3 = ",Mutation NB - Paternal Origin";
+   my $strMutacao11 = ",Transition - Purine/Purine";
+   my $strMutacao12 = ",Transversion - Purine/Pyrimidine";
+   my $strMutacao13 = ",Transition - Pyrimidine/Pyrimidine";
+   my $strMutacao21 = ",Inference";
    
    my $reg = '';
    $reg = join(',',@fields);
@@ -206,83 +206,83 @@ while (my $fields = $csv->getline($data)) {
           case 'AA' {if ($call_base_father eq 'AA') {          
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                    say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }                             
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {                            
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }                     
                      } #if $call_base_father 'AA'
@@ -290,409 +290,409 @@ while (my $fields = $csv->getline($data)) {
                      elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                          if($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                            say $fh_log $reg, $strMutacao2, $strMutacao11;
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                            say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                            say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                            say $fh_log $reg, $strMutacao7, $strMutacao10;	 
+                            say $fh_log $reg, $strMutacao2, $strMutacao12;	 
                          }    
                          elsif($call_base_offspring eq 'TC') {
-                            say $fh_log $reg, $strMutacao7, $strMutacao10;	
+                            say $fh_log $reg, $strMutacao2, $strMutacao12;	
                          }
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                      }#elsif ($call_base_father eq 'AC' or 'CA')
                      elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }	
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }	 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                            say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                            say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }
                          }
                      }#elsif ($call_base_father eq 'AG' or 'GA')
                      elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }	 
                          } 
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }	 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'AT' or 'TA')
                      elsif ($call_base_father eq 'CC') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          } 
                      }#elsif ($call_base_father eq 'CC')
                      elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9;
+                             say $fh_log $reg, $strMutacao2, $strMutacao11;
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }
                          }
                      }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                      elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                      }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                      elsif ($call_base_father eq 'GG') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          } 
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'GG')   
                      elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9;
+                             say $fh_log $reg, $strMutacao2, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                            say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                            say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                      elsif ($call_base_father eq 'TT') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'GC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }                       
                      }#elsif ($call_base_father eq 'TT')                          
                  }  # fim do case AA;
@@ -700,56 +700,56 @@ while (my $fields = $csv->getline($data)) {
                 case ['AC','CA'] {if ($call_base_father eq 'AA') {          
                          if($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao8,  $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3,  $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }  
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }  
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }                  
                      } #if $call_base_father 'AA'
@@ -757,337 +757,334 @@ while (my $fields = $csv->getline($data)) {
                      elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                          if($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }; 
                          } 
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          } 
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }  
                          }                    
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }  
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }  
                          }
                      }#elsif ($call_base_father eq 'AC' or 'CA')
                      elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                          if($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             } 
                          }
                      }#elsif ($call_base_father eq 'AG' or 'GA')
                      elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                          if($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                    
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'AT' or 'TA')
                      elsif ($call_base_father eq 'CC') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                    
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                             } 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                             } 
                          }
                      }#elsif ($call_base_father eq 'CC')
                      elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                             }
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                             } 
                          }
                      }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                      elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             }  
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                      elsif ($call_base_father eq 'GG') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             }  
                          }
                      }#elsif ($call_base_father eq 'GG')   
                      elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                      }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                      elsif ($call_base_father eq 'TT') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             }  
                          }                    
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
-                         }
-                         elsif($call_base_offspring eq '' or $call_base_offspring eq 'NoCall') {
-                             #say $fh_log $reg, $strMutacao13, $strMutacao14; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'TT')
                  }  # fim do case AC, CA;
@@ -1095,399 +1092,399 @@ while (my $fields = $csv->getline($data)) {
             case ['AG','GA'] {if ($call_base_father eq 'AA') {          
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }  
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }                    
                      } #if $call_base_father 'AA'                     
                      elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                          if($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }  
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10;  
+                             say $fh_log $reg, $strMutacao2, $strMutacao12;  
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13;
                          }    
                          elsif($call_base_offspring eq 'TT') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }  
                          }
                      }#elsif ($call_base_father eq 'AC' or 'CA')
                      elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          } 
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }                       
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }    
                          elsif($call_base_offspring eq 'TT') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             }  
                          }
                      }#elsif ($call_base_father eq 'AG' or 'GA')                     
                      elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao13; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                          }   
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'AT' or 'TA')
                      elsif ($call_base_father eq 'CC') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }                    
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          } 
                      }#elsif ($call_base_father eq 'CC')                     
                      elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             } 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                               if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          } 
                      }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                      elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                      }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                      elsif ($call_base_father eq 'GG') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }
                          }                      
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }    
                          elsif($call_base_offspring eq 'TT') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                      }#elsif ($call_base_father eq 'GG')   
                      elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }  
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                      elsif ($call_base_father eq 'TT') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }  
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          } 
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11; 
                          }   
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'TT')                          
                  }  # fim do case AG, GA;
@@ -1495,3067 +1492,3067 @@ while (my $fields = $csv->getline($data)) {
                  case ['AT','TA'] {if ($call_base_father eq 'AA') {          
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao8,  $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3,  $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                    
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }                   
                      } #if $call_base_father 'AA'
                      
                      elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                          if($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;  
+                             say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13;  
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }
                          }                   
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                          }
                      }#elsif ($call_base_father eq 'AC' or 'CA')
                      elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }   
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                          }  
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'AG' or 'GA')
                      
                      elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                          if ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                             } 
                          } 
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                 
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao21;
                             } 
                          }   
                      }#elsif ($call_base_father eq 'AT' or 'TA')
                      elsif ($call_base_father eq 'CC') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                     
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          } 
                      }#elsif ($call_base_father eq 'CC')
                      
                      elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }                         
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12; 
                          }    
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                          } 
                      }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                      elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }  
                      }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                      elsif ($call_base_father eq 'GG') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                          }   
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                          } 
                          elsif($call_base_offspring eq 'TT') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'GG')   
                      elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao15;
+                             say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao13;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11; 
                          } 
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             }
                          }
                          elsif($call_base_offspring eq 'GG') {
-                             say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                          }
                      }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                      elsif ($call_base_father eq 'TT') {
                          if ($call_base_offspring eq 'AA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10;
+                             say $fh_log $reg, $strMutacao3, $strMutacao12;
                          }
                          elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao13; 
                          }
                          elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                             say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                             say $fh_log $reg, $strMutacao3, $strMutacao12; 
                          }                         
                          elsif($call_base_offspring eq 'CC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }
                          elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                             } 
                          }  
                          elsif($call_base_offspring eq 'GG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          }                    
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             } 
                          } 
                      }#elsif ($call_base_father eq 'TT')                         
                  }  # fim do case AT, TA;                 
                  case 'CC' {if ($call_base_father eq 'AA') {          
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }  
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }                  
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }
                                  }         
                              } #if $call_base_father 'AA'
                      
                              elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  } 
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }                  
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                              }#elsif ($call_base_father eq 'AC' or 'CA')
                              elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  } 
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }                     
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                              }#elsif ($call_base_father eq 'AG' or 'GA')
                              elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }                     
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                              }#elsif ($call_base_father eq 'AT' or 'TA')
                              elsif ($call_base_father eq 'CC') {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao21;
                                     } 
                                  } 
                                  elsif($call_base_offspring eq 'GG') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }; 
                                  }                   
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao21;
                                     } 
                                  } 
                              }#elsif ($call_base_father eq 'CC')
                              elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                                  if ($call_base_offspring eq 'AA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  } 
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }                     
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  } 
                              }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                              elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                                  if ($call_base_offspring eq 'AA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }                   
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  } 
                              }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                              elsif ($call_base_father eq 'GG') {
                                  if ($call_base_offspring eq 'AA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }                     
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                              }#elsif ($call_base_father eq 'GG')   
                              elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                                  if ($call_base_offspring eq 'AA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12;
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }                   
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  } 
                              }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                              elsif ($call_base_father eq 'TT') {
                                  if ($call_base_offspring eq 'AA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }                    
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                              }#elsif ($call_base_father eq 'TT')                                  
                  }  # fim do case CC;
                  
                  case ['CG','GC'] {if ($call_base_father eq 'AA') {          
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12;
                                      }elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }   
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                         say $fh_log $reg, $strMutacao8,  $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3,  $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }                      
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }  
                                      }                    
                                  } #if $call_base_father 'AA'
                                  
                                  elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                      }elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21; 
                                      }  
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }    
                                      elsif($call_base_offspring eq 'TC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }                      
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15;
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13;
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                  }#elsif ($call_base_father eq 'AC' or 'CA')
                                  elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12;
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      } 
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }                   
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                  }#elsif ($call_base_father eq 'AG' or 'GA')
                                  
                                  elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13;
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      } 
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                  }#elsif ($call_base_father eq 'AT' or 'TA')
                                  elsif ($call_base_father eq 'CC') {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }  
                                      elsif($call_base_offspring eq 'GG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }                    
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13;
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }
                                      }
                                  }#elsif ($call_base_father eq 'CC')                                 
                                  elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }                      
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }
                                      } 
                                  }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                                  elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12;
                                      }  
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      } 
                                  }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                                  elsif ($call_base_father eq 'GG') {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }  
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      } 
                                      elsif($call_base_offspring eq 'TG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                                         } 
                                      }                      
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                                         } 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                  }#elsif ($call_base_father eq 'GG')   
                                  elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12 
                                      }
                                  }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                                  elsif ($call_base_father eq 'TT') {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                  }#elsif ($call_base_father eq 'TT')    
                  }  # fim do case CG, GC;                 
                  case ['CT','TC'] {if ($call_base_father eq 'AA') {          
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12;
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      } 
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                         say $fh_log $reg, $strMutacao8,  $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3,  $strMutacao12; 
                                      } 
                                      elsif($call_base_offspring eq 'GG') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }                    
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }                    
                                  } #if $call_base_father 'AA'                                 
                                  elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12;
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }                    
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      }
                                  }#elsif ($call_base_father eq 'AC' or 'CA')
                                  elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12;
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }  
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }  
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'AG' or 'GA')
                                  
                                  elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12;
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }               
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }    
                                  }#elsif ($call_base_father eq 'AT' or 'TA')
                                  elsif ($call_base_father eq 'CC') {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5,$strMutacao10;
+                                            say $fh_log $reg, $strMutacao1,$strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }                   
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                      } 
                                  }#elsif ($call_base_father eq 'CC')                                 
                                  elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7,$strMutacao10;
+                                            say $fh_log $reg, $strMutacao2,$strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      } 
                                  }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                                  elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'GG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         }
                                      }               
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         }
                                      }    
                                  }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                                  elsif ($call_base_father eq 'GG') {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }  
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }   
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'GG')   
                                  elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                         say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                                  elsif ($call_base_father eq 'TT') {
                                      if ($call_base_offspring eq 'AA') {
                                          if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5,  $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1,  $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }                
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      }    
                                  }#elsif ($call_base_father eq 'TT')                                     
                  }  # fim do case CT, TC;   
                  case 'GG' {if ($call_base_father eq 'AA') {          
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }                   
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }                  
                              } #if $call_base_father 'AA'
                      
                              elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }                   
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                        say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                        say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                              }#elsif ($call_base_father eq 'AC' or 'CA')
                              elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }                   
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                              }#elsif ($call_base_father eq 'AG' or 'GA')
                              elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                  } 
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }  
                                  elsif($call_base_offspring eq 'GG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12;
                                  } 
                                  elsif($call_base_offspring eq 'TT') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                              }#elsif ($call_base_father eq 'AT' or 'TA')
                              elsif ($call_base_father eq 'CC') {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  } 
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'TG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }                      
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                              }#elsif ($call_base_father eq 'CC')
                              elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }                      
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  } 
                              }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                              elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11;
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }  
                                  elsif($call_base_offspring eq 'GG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'TT') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  } 
                              }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                              elsif ($call_base_father eq 'GG') {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao21;
                                     } 
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                      if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }                          
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                              }#elsif ($call_base_father eq 'GG')   
                              elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }  
                                  elsif($call_base_offspring eq 'TT') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  } 
                              }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                              elsif ($call_base_father eq 'TT') {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  } 
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  } 
                                  elsif($call_base_offspring eq 'TT') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                              }#elsif ($call_base_father eq 'TT')                                 
                  }  # fim do case GG;         
                  
                  case ['GT','TG'] {if ($call_base_father eq 'AA') {          
                                      if ($call_base_offspring eq 'AA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12;
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;  
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13;  
                                      }
                                      elsif($call_base_offspring eq 'CC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      } 
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                        say $fh_log $reg, $strMutacao8,  $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3,  $strMutacao12; 
                                      }   
                                      elsif($call_base_offspring eq 'GG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }                    
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }              
                                  } #if $call_base_father 'AA'                                 
                                  elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12;
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15;  
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13;  
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }                   
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      }
                                  }#elsif ($call_base_father eq 'AC' or 'CA')
                                  elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11;
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }  
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }    
                                      elsif($call_base_offspring eq 'TC') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'TT') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'AG' or 'GA')                                 
                                  elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                      if ($call_base_offspring eq 'AA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12;
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }  
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      } 
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                         } 
                                      } 
                                      elsif($call_base_offspring eq 'GG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'AT' or 'TA')
                                  elsif ($call_base_father eq 'CC') {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }                
                                      elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                        say $fh_log $reg, $strMutacao6, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao1, $strMutacao13; 
                                      } 
                                  }#elsif ($call_base_father eq 'CC')                                 
                                  elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }    
                                      elsif($call_base_offspring eq 'TT') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                      }
                                  }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                                  elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                             if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
-                                        say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'GG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                                  elsif ($call_base_father eq 'GG') {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                         say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                         say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }  
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }   
                                      elsif($call_base_offspring eq 'TT') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'GG')   
                                  elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }  
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }
                                      }
                                  }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                                  elsif ($call_base_father eq 'TT') {
                                      if ($call_base_offspring eq 'AA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                         }
                                      }
                                      elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                      elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                                         }
                                      }
                                      elsif($call_base_offspring eq 'CC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao13, $strMutacao21;
                                         } 
                                      }
                                      elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                      }
                                      elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                         if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                                say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                         }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                                say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                                say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                         } 
                                      }  
                                      elsif($call_base_offspring eq 'GG') {
-                                        say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                        say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                      }
                                  }#elsif ($call_base_father eq 'TT')                                       
                  }  # fim do case GT, TG;                 
                  case 'TT' {if ($call_base_father eq 'AA') {          
                                  if ($call_base_offspring eq 'AA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }   
                                  elsif($call_base_offspring eq 'GG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }                
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }                      
                              } #if $call_base_father 'AA'                     
                              elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }  
                                  }                   
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                  }
                              }#elsif ($call_base_father eq 'AC' or 'CA')
                              elsif ($call_base_father eq 'AG' or $call_base_father eq 'GA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     ay $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     ay $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                  }    
                                  elsif($call_base_offspring eq 'GG') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }   
                                  elsif($call_base_offspring eq 'TT') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                              }#elsif ($call_base_father eq 'AG' or 'GA')
                              elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                  if ($call_base_offspring eq 'AA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12;
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }    
                                  elsif($call_base_offspring eq 'GG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                              }#elsif ($call_base_father eq 'AT' or 'TA')
                              elsif ($call_base_father eq 'CC') {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
-                                     say $fh_log $reg, $strMutacao6, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao1, $strMutacao12; 
                                  }                    
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao13; 
                                  }
                              }#elsif ($call_base_father eq 'CC')
                              elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' ) {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11; 
                                  } 
                                  elsif($call_base_offspring eq 'TT') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                  }
                              }#elsif ($call_base_father eq 'CG' or $call_base_father eq 'GC' )  
                              elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' ) {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }  
                                  } 
                              }#elsif ($call_base_father eq 'CT' or $call_base_father eq 'TC' )
                              elsif ($call_base_father eq 'GG') {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao9; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao11; 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'GC') {
-                                     say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                                     say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                                  }   
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
-                                     say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15; 
+                                     say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13; 
                                  } 
                                  elsif($call_base_offspring eq 'GG') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12; 
                                  } 
                                  elsif($call_base_offspring eq 'TT') {
-                                    say $fh_log $reg, $strMutacao8, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao3, $strMutacao12; 
                                  }
                              }#elsif ($call_base_father eq 'GG')   
                              elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }  
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao15; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao13; 
                                  } 
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao10, $strMutacao15;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao13, $strMutacao21;
                                     }   
                                  }  
                                  elsif($call_base_offspring eq 'GG') {
-                                    say $fh_log $reg, $strMutacao7, $strMutacao10; 
+                                    say $fh_log $reg, $strMutacao2, $strMutacao12; 
                                  }
                              }#elsif ($call_base_father eq 'GT' or $call_base_father eq 'TG' ) 
                              elsif ($call_base_father eq 'TT') {
                                  if ($call_base_offspring eq 'AA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }  
                                  }elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                                     } 
                                  }   
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                                     } 
                                  }
                                  elsif($call_base_offspring eq 'GG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao9, $strMutacao10;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                                     } 
                                  }                 
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao7, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao8, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao5, $strMutacao15, $strMutacao9;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao13, $strMutacao11, $strMutacao21;
                                     }
                                  }  
                              }#elsif ($call_base_father eq 'TT')                                   
