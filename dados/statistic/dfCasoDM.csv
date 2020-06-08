@@ -1,0 +1,16 @@
+trios,dm_caso,idade_progenitor,faixa_etaria,sexo_progenitor,doses_rads
+F04-2F,1873,27,1,Masculino,0.1
+F06-2F,2136,35,2,Masculino,0.2
+F07-1F,1834,24,1,Feminino,0.2
+F07-4F,2612,26,1,Feminino,0.2
+F08-2F,1260,20,1,Feminino,0.2
+F10-2F,2262,24,2,Feminino,0.2
+F12-2F,2875,30,2,Feminino,0.3
+F15-2F,1212,18,1,Masculino,0.2
+F18-2F,1631,47,4,Masculino,0.2
+F21-2F,972,27,2,Feminino,0.2
+F22-2F,1673,31,3,Feminino,0.2
+F22-3F,1414,34,3,Feminino,0.2
+F22-4F,1304,35,3,Feminino,0.2
+FAD-24F,2159,21,2,Masculino,0.45
+FAD-25F,1316,18,1,Masculino,0.45
