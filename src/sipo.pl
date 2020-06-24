@@ -197,7 +197,7 @@ while (my $fields = $csv->getline($data)) {
    my $strMutacao11 = ",Transition - Purine/Purine";
    my $strMutacao12 = ",Transversion - Purine/Pyrimidine";
    my $strMutacao13 = ",Transition - Pyrimidine/Pyrimidine";
-   my $strMutacao21 = ",Inference";
+   my $strMutacao21 = ",Unsolved";
    
    my $reg = '';
    $reg = join(',',@fields);
