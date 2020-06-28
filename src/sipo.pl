@@ -6,9 +6,10 @@ use Text::CSV_XS;
 use Switch;
 use Class::Fields;
 
-#@utor: Hugo Leite
-#Versao: 13
-#Data: 25/05/2020
+#@uthor: Hugo Leite
+#leader: Alexandre Caetano; Claudio da Silva; Divino Aparecido da Cruz
+#Versao: 15
+#Data: 15/06/2020
 
 my $layout = '';
 $layout=$ARGV[0];  

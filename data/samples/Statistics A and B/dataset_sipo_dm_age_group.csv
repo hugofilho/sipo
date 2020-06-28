@@ -1,0 +1,16 @@
+trio.caso;progenitor.exposto;dosagem;idade.pai;idade.mae;origem.paterna;origem.materna;dm.total;group;dm.inference;dm.no.inference
+F07-4F;Feminino;0.2;56;20;1509;1085;2612;A;1661;951
+F10-2F;Feminino;0.2;21;24;1187;1054;2262;A;983;1279
+F12-2F;Feminino;0.3;31;30;1361;1486;2875;A;1325;1550
+F06-2F;Masculino;0.3;35;26;1045;1082;2136;A;651;1485
+FAD-24F;Masculino;0.5;21;19;1010;1102;2159;A;1286;873
+CMA051-1F;sem exposição;0.0;35;34;384;479;871;B;139;732
+CMA053-1F;sem exposição;0.0;35;27;315;361;682;B;89;593
+CMA060-1F;sem exposição;0.0;40;38;501;482;989;B;272;717
+CMA066-1F;sem exposição;0.0;31;20;543;594;1139;B;176;963
+CMA070-1F;sem exposição;0.0;20;24;448;545;996;B;105;891
+CMA005-1F;sem exposição;0.0;22;21;0;0;3177;C;1174;2003
+CMA008-1F;sem exposição;0.0;26;26;0;0;3725;C;2712;1013
+CMA009-1F;sem exposição;0.0;30;31;0;0;4261;C;2942;1319
+CMA016-1F;sem exposição;0.0;42;31;0;0;3157;C;1530;1627
+CMA020-1F;sem exposição;0.0;37;31;0;0;3467;C;1544;1923
