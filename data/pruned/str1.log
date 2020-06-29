@@ -12,7 +12,7 @@ Web-based version check ( --noweb to skip )
 Recent cached web-check found...Problem connecting to web
 
 Writing this text to log file [ str1.log ]
-Analysis started: Thu Apr 23 23:17:48 2020
+Analysis started: Thu Apr 23 17:21:32 2020
 
 Options in effect:
 	--bfile cesio
@@ -22,7 +22,7 @@ Options in effect:
 	--out str1
 
 Reading map (extended format) from [ cesio.bim ] 
-10614 markers to be included from [ cesio.bim ]
+2789 markers to be included from [ cesio.bim ]
 Reading pedigree information from [ cesio.fam ] 
 50 individuals read from [ cesio.fam ] 
 50 individuals with nonmissing phenotypes
@@ -32,25 +32,29 @@ Missing phenotype value is also -9
 25 males, 25 females, and 0 of unspecified sex
 Reading genotype bitfile from [ cesio.bed ] 
 Detected that binary PED file is v1.00 SNP-major mode
-Before frequency and genotyping pruning, there are 10614 SNPs
+Before frequency and genotyping pruning, there are 2789 SNPs
 0 founders and 50 non-founders found
-10614 SNPs with no founder genotypes observed
+2789 SNPs with no founder genotypes observed
 Warning, MAF set to 0 for these SNPs (see --nonfounders)
 Writing list of these SNPs to [ str1.nof ]
 Total genotyping rate in remaining individuals is 1
 0 SNPs failed missingness test ( GENO > 1 )
 0 SNPs failed frequency test ( MAF < 0 )
-After frequency and genotyping pruning, there are 10614 SNPs
+After frequency and genotyping pruning, there are 2789 SNPs
 After filtering, 20 cases, 30 controls and 0 missing
 After filtering, 25 males, 25 females, and 0 of unspecified sex
+
+ **Warning** this analysis typically requires whole-genome level data
+             to give accurate results 
+
 Converting data to Individual-major format
 Clustering individuals based on genome-wide IBS
 Merge distance p-value constraint = 0.05
-Of these, 1186 are pairable based on constraints
+Of these, 1203 are pairable based on constraints
 Writing cluster progress to [ str1.cluster0 ]
 Writing cluster solution (1) [ str1.cluster1 ]
 Writing cluster solution (2) [ str1.cluster2 ]
 Writing cluster solution (3) [ str1.cluster3 ]
 
-Analysis finished: Thu Apr 23 23:17:49 2020
+Analysis finished: Thu Apr 23 17:21:33 2020
 

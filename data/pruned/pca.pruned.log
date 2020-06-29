@@ -7,14 +7,14 @@ Options in effect:
 
 Hostname: LAPTOP-7GNLJK1G
 Working directory: F:\doutorado\plink2
-Start time: Thu Apr 23 23:34:43 2020
+Start time: Thu Apr 23 17:45:03 2020
 
-Random number seed: 1587695683
+Random number seed: 1587674703
 16258 MiB RAM detected; reserving 8129 MiB for main workspace.
 Using up to 4 compute threads.
 50 samples (25 females, 25 males; 0 founders) loaded from
 pruned.merge.cesio.fam.
-10614 variants loaded from pruned.merge.cesio.bim.
+2789 variants loaded from pruned.merge.cesio.bim.
 1 binary phenotype loaded (20 cases, 30 controls).
 Calculating allele frequencies... done.
 Constructing GRM: done.
@@ -22,4 +22,4 @@ Extracting eigenvalues and eigenvectors... done.
 --pca: Eigenvectors written to pca.pruned.eigenvec , and eigenvalues written to
 pca.pruned.eigenval .
 
-End time: Thu Apr 23 23:34:43 2020
+End time: Thu Apr 23 17:45:03 2020

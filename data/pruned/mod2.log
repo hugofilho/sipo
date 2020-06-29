@@ -12,18 +12,18 @@ Web-based version check ( --noweb to skip )
 Recent cached web-check found...Problem connecting to web
 
 Writing this text to log file [ mod2.log ]
-Analysis started: Thu Apr 23 23:16:38 2020
+Analysis started: Thu Apr 23 17:21:01 2020
 
 Options in effect:
 	--bfile cesio
 	--model
 	--cell 5
-	--snp rs3845291
+	--snp rs12060299
 	--out mod2
 
 Reading map (extended format) from [ cesio.bim ] 
-10614 markers to be included from [ cesio.bim ]
-Scan region on chromosome 1 from [ rs3845291 ] to [ rs3845291 ]
+2789 markers to be included from [ cesio.bim ]
+Scan region on chromosome 1 from [ rs12060299 ] to [ rs12060299 ]
 Reading pedigree information from [ cesio.fam ] 
 50 individuals read from [ cesio.fam ] 
 50 individuals with nonmissing phenotypes
@@ -47,5 +47,5 @@ After filtering, 25 males, 25 females, and 0 of unspecified sex
 Full-model association tests, minimum genotype count: --cell 5
 Writing full model association results to [ mod2.model ] 
 
-Analysis finished: Thu Apr 23 23:16:38 2020
+Analysis finished: Thu Apr 23 17:21:01 2020
 

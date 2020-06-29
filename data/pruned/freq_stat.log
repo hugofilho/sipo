@@ -12,7 +12,7 @@ Web-based version check ( --noweb to skip )
 Recent cached web-check found...Problem connecting to web
 
 Writing this text to log file [ freq_stat.log ]
-Analysis started: Thu Apr 23 23:11:36 2020
+Analysis started: Thu Apr 23 17:17:06 2020
 
 Options in effect:
 	--bfile cesio
@@ -21,7 +21,7 @@ Options in effect:
 	--out freq_stat
 
 Reading map (extended format) from [ cesio.bim ] 
-10614 markers to be included from [ cesio.bim ]
+2789 markers to be included from [ cesio.bim ]
 Reading pedigree information from [ cesio.fam ] 
 50 individuals read from [ cesio.fam ] 
 50 individuals with nonmissing phenotypes
@@ -31,9 +31,9 @@ Missing phenotype value is also -9
 25 males, 25 females, and 0 of unspecified sex
 Reading genotype bitfile from [ cesio.bed ] 
 Detected that binary PED file is v1.00 SNP-major mode
-Before frequency and genotyping pruning, there are 10614 SNPs
+Before frequency and genotyping pruning, there are 2789 SNPs
 0 founders and 50 non-founders found
 Writing allele frequencies (all individuals) to [ freq_stat.frq ] 
 
-Analysis finished: Thu Apr 23 23:11:36 2020
+Analysis finished: Thu Apr 23 17:17:06 2020
 
