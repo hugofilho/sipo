@@ -26,7 +26,7 @@ The authors highlight the format of the call.
   * file name cannot contain space
   
 Using the SIPO call, it was possible to identify Mendelian inconsistencies in the genotypes of trios corresponding to de novo mutations that potentially represent mutations that occurred in the germ line of the father/mother, which was observed in the somatic tissue of the offspring. Diagram below represents the flowchart of the procedures for the detection of the Mendelian deviation in the present study.
-![](/img/sipo_site.png)
+![](/img/fluxo_sipo.png)
 
 
 First, SIPO applied the filter with the confidence value <5x10E-2 to discard genotypes with low confidence value, disregarding the X and Y chromosome markers. With this, SIPO started the DM findings for each SNP marker. Therefore, inferences were designed to define the origin of the parent and consequently indicate the types of base substitutions. To close this study, the module was closed, using the R language resource (R Core Team, 2018), with the data analysis, through the extraction, quantification and applications of statistical techniques.
