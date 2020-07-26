@@ -424,3 +424,255 @@ p.pie.infer.control <- p.pie.infer.control %>% layout(title = 'Proportion of Inf
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 ```
+
+```r
+# MULTIPLE T-TEST IN R FOR DIFFERENT VARIABLES
+# Load required R packages
+library(tidyverse)
+library(rstatix)
+library(ggpubr)
+variantes<-read.csv("dataset_variantes_progenitores.csv",header = TRUE,sep = ";",dec = ".")
+dfTestt <- variantes[c(4:9)]
+# Transform the data into long format
+# Put all variables in the same column except `group`, the grouping variable
+dfTestt.long <- dfTestt %>%
+  pivot_longer(-Group, names_to = "variables", values_to = "value")
+dfTestt.long %>% sample_n(30)
+# Run multiple T-tests
+stat.test <- dfTestt.long %>%
+  group_by(variables) %>%
+  t_test(value ~ Group) %>%
+  adjust_pvalue(method = "BH") %>%
+  add_significance()
+stat.test
+# Create multi-panel Boxplots with t-test p-values
+# Create the plot
+pTestTVariante <- ggboxplot(
+  dfTestt.long, x = "Group", y = "value", ylab = "Number of Mutation Deviation"
+  fill = "Group", palette = "npg", legend = "none",
+  ggtheme = theme_pubr(border = TRUE)
+  ) +
+  facet_wrap(~variables)
+# Add statistical test p-values
+stat.test <- stat.test %>% add_xy_position(x = "Group")
+stat.test$p.scient <- format(stat.test$p.adj, scientific = TRUE, digits=3)
+pTestTVariante + stat_pvalue_manual(stat.test, label = "p.scient")+
+   scale_y_continuous(expand = expansion(mult = c(0.05, 0.15)))
+```
+```r
+variant_sex_pat<-read.csv("variantes_progenitores_sexo_paterna.csv",header = TRUE,sep = ";",dec = ".")
+dfVariantsPat <- variant_sex_pat[c(2:8)]
+# Transform the data into long format
+# Put all variables in the same column except `group`, the grouping variable
+dfVariant.long.pat <- dfVariantsPat %>%
+  pivot_longer(-Group, names_to = "variables", values_to = "value")
+dfVariant.long.pat %>% sample_n(30)
+# Run multiple T-tests
+stat.test.pat <- dfVariant.long.pat %>%
+  group_by(variables) %>%
+  t_test(value ~ Group) %>%
+  adjust_pvalue(method = "BH") %>%
+  add_significance()
+stat.test.pat
+# Create multi-panel Boxplots with t-test p-values
+# Create the plot
+pVariantSexPat <- ggboxplot(dfVariant.long.pat, x = "Group", y = "value", ylab = "Variant of SNPs With Paternal Origin",
+  fill = "Group", palette = "RdBu", legend = "none",
+  ggtheme = theme_pubr(border = TRUE)
+  ) +
+  facet_wrap(~variables)
+# Add statistical test p-values
+stat.test.pat <- stat.test.pat %>% add_xy_position(x = "Group")
+pVariantSexPat + stat_pvalue_manual(stat.test.pat, label = "p.adj.signif", tip.length = 0.01)
+
+variantes_progenitores_sexo_mat.csv
+```
+```r
+variant_sex_mat<-read.csv("variantes_progenitores_sexo_mat.csv",header = TRUE,sep = ";",dec = ".")
+# Change point shapes and colors
+pmat<-ggplot(variant_sex_mat, aes(x=Family, y=AC, shape=factor(Group)))
+pmat + geom_point(aes(colour = factor(Group)), size = 4) + 
+    geom_point(colour = "grey90", size = 1.5)
+
+# plot bar
+dfVariantsMat <- variant_sex_mat[c(2:8)]
+# Transform the data into long format
+# Put all variables in the same column except `group`, the grouping variable
+dfVariant.long.mat <- dfVariantsMat %>%
+  pivot_longer(-Group, names_to = "variables", values_to = "value")
+dfVariant.long.mat %>% sample_n(30)
+
+pmatbar<-ggdotchart(dfVariant.long.mat, x = "Group", y ="variables",
+           color = "color", palette = "jco", size = 3, 
+           add = "segment", 
+           add.params = list(color = "lightgray", size = 1.5),
+           position = position_dodge(0.3),
+           ggtheme = theme_pubclean()
+           )
+
+pmatfracao<-ggplot(variant_fracao, aes(x=Age, y=Fracao, shape=factor(Progenitor)))
+pmatfracao + 
+    geom_point(aes(colour = factor(Progenitor)), size = 4) + 
+    geom_smooth(method=lm, se=FALSE, fullrange=TRUE)+
+    theme_classic()
+# Use brewer color palettes
+pmatfracao+scale_color_brewer(palette="Dark2")
+
+```
+
+```r
+#regression linear: age parental VS Fraction Age P/M (fig 1; Gao)
+variant_fracao_group<-read.csv("variantes_sex_progenitor_ratio_group.csv",header = TRUE,sep = ";",dec = ".")
+group <- factor(variant_fracao_group$Group)
+pvarfracaogroup <- ggplot(variant_fracao_group, aes(x = AgeParental, y = RatioPM, shape=Group, colour= Group, fill=Group)) +
+    geom_point() +
+    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
+    stat_smooth(method = "lm", fill = "honeydew1", size = 2, alpha = 1, se = FALSE) +
+    scale_colour_manual(values = c("blue","orange"))    
+pvarfracaogroup +
+        scale_y_continuous(limits=c(0.5,1.75 ),breaks = seq(0.5, 1.75, by = 0.25)) +
+        labs(
+            x = "Paternal Age",
+            y = "Fractions of paternal in all phased mutations"            
+        )
+pvarfracao
+
+#regression poisson: age VS fraction Age P/M
+modelRegrPoisson<-glm(formula = Age ~ Fracao + Progenitor, family = poisson, data = variant_fracao)
+summary(modelRegrPoisson)
+modelRegrPoissonAge<-glm(formula = Age ~ AC + AG + AT + CG + CT + GT, family = poisson, data= variant_progenitor_age)
+summary(modelRegrPoissonAge)
+
+#plot MD VS Age with multiples regression linear (Fig 2A; Gao)
+variant_age_md<-read.csv("age_md_parental.csv",header = TRUE,sep = ";",dec = ".")
+p.var.age.md.control<-ggplot(variant_age_md, aes(Age_Control, MD_Control, shape=Parental_Control, colour=Parental_Control, fill=Parental_Control)) +
+  geom_smooth(method="lm") +
+  geom_point(size=3) +
+  theme_bw() + 
+  xlab("Parental Age") +
+  ylab("Mutation count") +
+  expand_limits(y=0) +
+  scale_x_continuous(limits=c(10, 60),breaks = seq(10, 60, by = 10)) +
+  scale_y_continuous(limits=c(0, 1500),breaks = seq(0, 1500, by = 250))
+#Group Case
+p.var.age.md.case<-ggplot(variant_age_md, aes(Age_Case, MD_Case, shape=Parental_Case, colour=Parental_Case, fill=Parental_Case)) +
+  geom_smooth(method="lm") +
+  geom_point(size=3) +
+  theme_bw() + 
+  xlab("Parental Age") +
+  ylab("Mutation count") +
+  expand_limits(y=0) +
+  scale_x_continuous(limits=c(10, 60),breaks = seq(10, 60, by = 10)) +
+  scale_y_continuous(limits=c(0, 1500),breaks = seq(0, 1500, by = 250))
+
+
+
+#plot ratio age VS ratio md (Figu 2B; Gao)
+ratio_age_md<-read.csv("ratio_age_md.csv",header = TRUE,sep = ";",dec = ".")
+rangeFMControl <- factor(ratio_age_md$RangeFM_Control)
+rangeMFControl <- factor(ratio_age_md$RangeMF_Control)
+rangeFMCase <- factor(ratio_age_md$RangeFM_Case)
+rangeMFCase <- factor(ratio_age_md$RangeMF_Case)
+
+p.ratio.age.md.control <- ggplot(ratio_age_md, aes(x = RatioAgeFM_Control, y = RadioMDFM_Control, shape=rangeFMControl, colour= rangeFMControl, fill=rangeFMControl)) +
+    geom_point(size=3) +
+    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
+    scale_colour_manual(values = c("red","purple")) +
+    scale_y_continuous(limits=c(0.50, 2.0),breaks = seq(0.50, 2.0, by = 0.25))
+p.ratio.age.md.control +
+        labs(
+            x = "Ratio Paternal/Maternal Age - Control",
+            y = "Ratio Paternal/Maternal Mutation - Control"            
+        )
+
+p.ratio.age.md.case <- ggplot(ratio_age_md, aes(x = RatioAgeFM_Case, y = RadioMDFM_Case, shape=rangeFMCase, colour= rangeFMCase, fill=rangeFMCase)) +
+    geom_point(size=3) +    
+    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
+    scale_colour_manual(values = c("green","black")) +
+    scale_y_continuous(limits=c(0.50, 2.0),breaks = seq(0.50, 2.0, by = 0.25))
+p.ratio.age.md.case +
+        labs(
+            x = "Ratio Paternal/Maternal Age - Case",
+            y = "Ratio Paternal/Maternal Mutation - Case"            
+        )
+
+p.ratio.expo.case <- ggplot(ratio_expo_pat, aes(x = RatioAgeFM, y = RatioDMFM)) +
+    geom_point(size=3) +    
+    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
+    scale_colour_manual(values = c("green","black"))
+p.ratio.expo.case +
+        labs(
+            x = "Ratio Paternal/Maternal Age - Case",
+            y = "Ratio Paternal/Maternal Mutation - Case"            
+        )
+
+p.ratio.expo.case.mat <- ggplot(ratio_expo_mat, aes(x = RatioAgeMF, y = RatioDMMF)) +
+    geom_point(size=3) +    
+    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
+    scale_colour_manual(values = c("green","black"))
+p.ratio.expo.case.mat +
+        labs(
+            x = "Ratio Maternal/Paternal Age - Case",
+            y = "Ratio Maternal/Paternal Mutation - Case"            
+        )
+# plot ratio MD father / MD mother VS Age (Paternal and Maternal) (Fig 2C)
+library("ggpubr")
+library(ggplot2)
+ratio_cel_md<-read.csv("ratio_md_parental.csv",header = TRUE,sep = ";",dec = ".")
+
+p.cel.pat.control<-ggplot(ratio_cel_md,aes(x=AgeFatherControl, y=Ratio_CelMDFM_Control)) + 
+  geom_point(shape=19, color="black")+
+  geom_smooth(method=lm, linetype="dashed", 
+             color="darkred", fill="green", level=0.95)+
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"))
+  )+
+  labs(title="Group Control: Paternal Age vs Radio Mendelian Deviation: Father/Mother",
+       x="Paternal Age", y = "Paternal-to-Maternal Ratio")
+
+p.cel.pat.case<-ggplot(ratio_cel_md,aes(x=AgeFatherCase, y=Ratio_CelMDFM_Case)) + 
+  geom_point(shape=19, color="black")+
+  geom_smooth(method=lm, linetype="dashed", 
+             color="darkblue", fill="gray", level=0.95)+
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"))
+  )+
+  scale_y_continuous(limits=c(5, 30),breaks = seq(5, 30, by = 5)) +
+  labs(title="Group Case: Paternal Age vs Radio Mendelian Deviation: Father/Mother",
+       x="Paternal Age", y = "Paternal-to-Maternal Ratio")
+
+p.cel.mat.control<-ggplot(ratio_cel_md,aes(x=AgeMotherControl, y=Ratio_CelMDFM_Control)) + 
+  geom_point(shape=21)+
+  geom_smooth(method=lm, linetype="dashed", 
+             color="blue", fill="orange", level=0.95)+
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"))
+  )+
+  labs(title="Group Control: Maternal Age vs Radio Mendelian Deviation: Father/Mother",
+       x="Maternal Age", y = "Paternal-to-Maternal Ratio")
+
+p.cel.mat.case<-ggplot(ratio_cel_md,aes(x=AgeMotherCase, y=Ratio_CelMDFM_Case)) + 
+  geom_point(shape=13, color="brown")+
+  geom_smooth(method=lm, linetype="dashed", 
+             color="red", fill="purple", level=0.95)+
+  stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"))
+  )+
+  labs(title="Group Case: Maternal Age vs Radio Mendelian Deviation: Father/Mother",
+       x="Maternal Age", y = "Paternal-to-Maternal Ratio")
+
+lm_mat<-lm(AgeMother ~ RatioMDPM, data = ratio_cel_md)
+lm_pat<-lm(AgeFather ~ RatioMDPM, data = ratio_cel_md)
+
+#plot MD VS Age with multiples regression linear
+  variant_sex_ratio<-read.csv("variantes_sex_progenitor_ratio.csv",header = TRUE,sep = ";",dec = ".")
+  p.var.sex.ratio<-ggplot(variant_sex_ratio, aes(AgeParental, RatioPM, colour=RangeRatio, fill=RangeRatio)) +
+      geom_smooth(method="lm") +
+      geom_point(size=3) +
+      theme_bw() + 
+      xlab("Parental Age") +
+      ylab("Ratio of paternal to maternal ages") +
+      expand_limits(y=0) +
+      scale_x_continuous(limits=c(10, 60),breaks = seq(10, 60, by = 10))
+
+```
