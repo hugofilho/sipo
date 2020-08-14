@@ -220,158 +220,161 @@ ggpar(pElipse,
 
 ```
 ```r
-#plot das regressões linear
+#plot das regressões linear (Fig 5A e Fig5B)
 library("ggpubr")
 library(ggplot2)
-dfMeioseCaso<-read.csv("dfMeioseCaso.csv",header = TRUE,sep = ",",dec = ".")
-
-p.lm.caso<-ggplot(dfMeioseCaso,aes(x=num.meiose.caso, y=tx.meiose.caso)) + 
-  geom_point(shape=19, color="black")+
-  geom_smooth(method=lm,  linetype="dashed",
-             color="darkred", fill="blue", level=0.95)+
+variant_age_md<-read.csv("age_md_parental.csv",header = TRUE,sep = ";",dec = ".")
+  p.var.age.md.control<-ggplot(variant_age_md, aes(Age_Control, MD_Control, shape=Parental_Control, colour=Parental_Control, fill=Parental_Control)) +
+  geom_smooth(method="lm") +
   stat_regline_equation(
     aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"))
   )+
-  scale_y_continuous(limits = c(2.00E-004, 10.00E-004)) +
-  labs(title="Group Case: Mutation Rate vs Number of Paternal Meiosis",
-       x="Number of Paternal Meiosis", y = "Mutation Rate")
+  geom_point(size=3) +
+  theme_bw() + 
+  xlab("Parental Age") +
+  ylab("Mutation count") +
+  expand_limits(y=0) +
+  scale_x_continuous(limits=c(10, 60),breaks = seq(10, 60, by = 10)) +
+  scale_y_continuous(limits=c(0, 1500),breaks = seq(0, 1500, by = 250))
 
-dfMeioseControl<-read.csv("dfMeioseControl.csv",header = TRUE,sep = ",",dec = ".")
-p.lm.control<-ggplot(dfMeioseControl,aes(x=num.meiose.control, y=tx.meiose.control)) + 
-  geom_point(shape=15, color="blue")+
-  geom_smooth(method=lm,  linetype="dashed",
-             color="darkgreen", fill="darkseagreen", level=0.95)+
-  stat_regline_equation(
-    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~"))
-  )+
-  scale_y_continuous(limits = c(2.00E-004, 10.00E-004)) +
-  labs(title="Group Control: Mutation Rate vs Number of Paternal Meiosis",
-       x="Number of Paternal Meiosis", y = "Mutation Rate")  
+#plot de regressão: Dose vs Frequencia de DM
+dfdadosgerais<-read.csv("dados_gerais_caso_controle.csv",header = TRUE,sep = ";",dec = ".")
+  
+  plmdosefrqdm<-ggplot(dfdadosgerais, aes(Dose, Freq_DM, colour=Dose, fill=Dose)) +
+      geom_smooth(method="lm") +
+      geom_point(size=3) +
+      theme_bw() + 
+      xlab("Absorbed Dose (Gy)") +
+      ylab("Frequency of Mendelian Deviation") 
+
+#plot ratio age VS ratio md (Figu 2B; Gao)
+dfdadosgerais<-read.csv("dados_gerais_caso_controle.csv",header = TRUE,sep = ";",dec = ".")
+dfDadosGeraisControl<-dfdadosgerais %>% 
+                     filter(Dose == 0)
+rangeFMAgeControl <- factor(dfDadosGeraisControl$Escala_F_M_Ages)
+rangeMFAgeControl <- factor(dfDadosGeraisControl$Escala_M_F_Ages)
+rangeFMAgeCase <- factor(dfDadosGeraisCaso$Escala_F_M_Ages)
+rangeMFAgeCase <- factor(dfDadosGeraisCaso$Escala_M_F_Ages)
+
+#control
+p.ratio.age.md.control <- ggplot(dfDadosGeraisControl, aes(x = Razao_F_M_ages, y = Freq_DM, shape=rangeFMAgeControl, colour= rangeFMAgeControl, fill=rangeFMAgeControl)) +
+    geom_point(size=3) +
+    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
+    stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~")))+
+    scale_colour_manual(values = c("red","purple")) 
+p.ratio.age.md.control +
+        scale_y_continuous(limits=c(0.0,3.0 ),breaks = seq(0.5, 3.0, by = 0.5)) +
+        scale_x_continuous(limits=c(0.0,0.0020),breaks = seq(0.0, 0.0020, by = 0.005)) +
+        labs(
+            x = "Ratio Paternal/Maternal Age - Control",
+            y = "Frequency Paternal/Maternal Mutation - Control"            
+        )
+#case
+p.ratio.age.md.case <- ggplot(dfDadosGeraisCaso, aes(x = Razao_F_M_ages, y = Freq_DM, shape=rangeFMAgeCase, colour= rangeFMAgeCase, fill=rangeFMAgeCase)) +
+    geom_point(size=3) +
+    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
+    stat_regline_equation(
+    aes(label =  paste(..eq.label.., ..rr.label.., sep = "~~~~")))+
+    scale_colour_manual(values = c("pink","blue")) 
+p.ratio.age.md.case +
+        labs(
+            x = "Ratio Paternal/Maternal Age - Case",
+            y = "Frequency Paternal/Maternal Mutation - Case"            
+        )
 
 ```
 ```r
-#aplicação da técnica de Cohen-d (estatisticamente representa a relação do tamanho do efeito da amostra)
-library(effsize)
-cohen.d.caso<-cohen.d(dfMeioseCaso$num.meiose,dfMeioseCaso$tx.meiose,pooled=TRUE,paired=FALSE,
-         na.rm=FALSE, mu=0, hedges.correction=FALSE,
-         conf.level=0.95,noncentral=FALSE, within=TRUE)
+#plot facet_wrap to variants from group
+dfdadosgerais<-read.csv("dados_gerais_caso_controle.csv",header = TRUE,sep = ";",dec = ".")
+dfVariants <- dfdadosgerais[c(2,18,22,26,30,34,38)]
+# Transform the data into long format
+# Put all variables in the same column except `group`, the grouping variable
+dfVariants.pivot <- dfVariants %>%
+  pivot_longer(-Group, names_to = "variables", values_to = "value")
+dfVariants.pivot %>% sample_n(30)
+variables.labs <- c("C>A", "C>G", "C>T","T>A", "T>C", "T>G")
+names(variables.labs) <- c("Total_C_A", "Total_C_G", "Total_C_T","Total_T_A", "Total_T_C", "Total_T_G")
 
-cohen.d.control<-cohen.d(dfMeioseControl$num.meiose,dfMeioseControl$tx.meiose,pooled=TRUE,paired=FALSE,
-         na.rm=FALSE, mu=0, hedges.correction=FALSE,
-         conf.level=0.95,noncentral=FALSE, within=TRUE)
+pClassAge<-ggplot(dfVariants.pivot, aes(x=Group, y=value, shape=Group, colour= Group, fill=Group)) + 
+                    geom_bar(stat="identity") +
+                    facet_grid(. ~ variables, labeller = labeller(variables = variables.labs)) +
+                    theme(strip.text = element_text(face="bold", size=rel(1.5)),
+                    strip.background = element_rect(fill="lightblue", colour="black",
+                    size=1))
+
+#paternal
+dfVariantsPat <- dfdadosgerais[c(2,19,23,27,31,35,39)]
+dfVariants.pivot.pat <- dfVariantsPat %>%
+  pivot_longer(-Group, names_to = "variables", values_to = "value")
+dfVariants.pivot.pat %>% sample_n(30)
+variables.labs <- c("C>A", "C>G", "C>T","T>A", "T>C", "T>G")
+names(variables.labs) <- c("Paternal_C_A", "Paternal_C_G", "Paternal_C_T","Paternal_T_A", "Paternal_T_C", "Paternal_T_G")
+pClassAgePat<-ggplot(dfVariants.pivot.pat, aes(x=Group, y=value)) + 
+                    geom_bar(stat="identity") +
+                    scale_fill_manual(values = c("black","orange")) +
+                    facet_grid(. ~ variables, labeller = labeller(variables = variables.labs)) +
+                    theme(strip.text = element_text(face="bold", size=rel(1.5)),
+                    strip.background = element_rect(fill="lightblue", colour="black",
+                    size=1))
+#maternal
+dfVariantsMat <- dfdadosgerais[c(2,20,24,28,32,36,40)]
+dfVariants.pivot.mat <- dfVariantsMat %>%
+  pivot_longer(-Group, names_to = "variables", values_to = "value")
+dfVariants.pivot.pat %>% sample_n(30)
+variables.labs <- c("C>A", "C>G", "C>T","T>A", "T>C", "T>G")
+names(variables.labs) <- c("Maternal_C_A", "Maternal_C_G", "Maternal_C_T","Maternal_T_A", "Maternal_T_C", "Maternal_T_G")
+pClassAgeMat<-ggplot(dfVariants.pivot.mat, aes(x=Group, y=value, fill=Group)) + 
+                    geom_bar(stat="identity") +
+                    scale_fill_manual(values = c("seagreen4","slategray3")) +
+                    facet_grid(. ~ variables, labeller = labeller(variables = variables.labs)) +
+                    theme(strip.text = element_text(face="bold", size=rel(1.5)),
+                    strip.background = element_rect(fill="lightblue", colour="black",
+                    size=1))
+
+
+
 ```
-```r
-#aplicação do método anova para comparar a variável idade entre os grupos
-library(ggpubr)
-anova.nummeiosepat<-read.table("dataset_pca_num_meiose_pat_geral.txt",header = TRUE,sep = "\t",dec = ".")
-# Compute the analysis of variance
-res.aov.nummeiosepat <- aov(num.meiose.paterna ~ group, data = anova.nummeiosepat)
-# Summary of the analysis
-summary(res.aov.nummeiosepat)
-p.bp.num.meiose.pat<-ggboxplot(anova.nummeiosepat, x = "group", y = "num.meiose.paterna", 
-          color = "group", palette = c("#00AFBB", "#FFA500"),
-          add = "jitter", shape = "group",
-          ylab = "Number of Paternal Meiosis", xlab = "Group")
-
-p.ggline.num.meiose<-ggline(anova.nummeiosepat, x = "group", y = "num.meiose.paterna",
-       add = c("mean_se", "jitter","violin"),  
-       order = c("case", "control"),
-       ylim = c(1.00E+11, 4.00E+11),
-       ylab = "Number of Paternal Meiosis", xlab = "Group")
-
-#Tukey multiple pairwise-comparisons
-#### The function STARTS here ####
-anova.nummeiosepat<-read.table("dataset_pca_num_meiose_pat_geral.txt",header = TRUE,sep = "\t",dec = ".")
-
-plotTukeyHSD <- plotTukeysHSD <- function(tukey.out,
-                           x.axis.label = "Comparison",
-                           y.axis.label = "Effect Size",
-                       axis.adjust = 0,
-                       adjust.x.spacing = 5){
-  
-  tukey.out <- as.data.frame(tukey.out[[1]])
-  means <- tukey.out$diff
-  categories <- row.names(tukey.out)
-  groups <- length(categories)
-  ci.low <- tukey.out$lwr
-  ci.up  <- tukey.out$upr                         
-  
-  n.means <- length(means)
-   
-  #determine where to plot points along x-axis
-  x.values <- 1:n.means
-  x.values <- x.values/adjust.x.spacing
-  
-                             
-  # calculate values for plotting limits            
-  y.max <- max(ci.up) +                    
-    max(ci.up)*axis.adjust
-  y.min <- min(ci.low) - 
-    max(ci.low)*axis.adjust
-  
-  if(groups == 2){ x.values <- c(0.25, 0.5)}
-  if(groups == 3){ x.values <- c(0.25, 0.5,0.75)}
-  
-  x.axis.min <- min(x.values)-0.05
-  x.axis.max <- max(x.values)+0.05
-  
-  x.limits <- c(x.axis.min,x.axis.max)
-  
-  #Plot means
-  plot(means ~ x.values,
-       xlim = x.limits,
-       ylim = c(y.min,y.max),
-       xaxt = "n",
-       xlab = "",
-       ylab = "",
-       cex = 1.25,
-       pch = 16)
-  
-  axis(side = 1, 
-       at = x.values,
-       labels = categories,
-      )
-  
-  #Plot upper error bar 
-  lwd. <- 2
-  arrows(y0 = means,
-         x0 = x.values,
-         y1 = ci.up,
-         x1 = x.values,
-         length = 0,
-         lwd = lwd.)
-  
-  #Plot lower error bar
-  arrows(y0 = means,
-         x0 = x.values,
-         y1 = ci.low,
-         x1 = x.values,
-         length = 0,
-         lwd = lwd.) 
-  
-  #add reference line at 0
-  abline(h = 0, col = 2, lwd = 2, lty =2)
-  
-  mtext(text = x.axis.label,side = 1,line = 1.75)
-  mtext(text = y.axis.label,side = 2,line = 1.95)
-  mtext(text = "Error bars = 95% CI",side = 3,line = 0,adj = 0)
-}
-
-tukey.nummeiose<-TukeyHSD(res.aov.nummeiosepat)
-par(mfrow = c(1,2))
-plot(tukey.nummeiose)
-plotTukeysHSD(tukey.nummeiose)
-
-library(multcomp)
-glht.anova.nummeiose<-summary(glht(res.aov.nummeiosepat, linfct = mcp(group = "Tukey")))
-
-#Multiple Comparisons of Means: Tukey Contrasts
-aov.nummeriose<-aov(formula = num.meiose.paterna ~ group, data = anova.nummeiosepat)
 
 #Pairewise t-test
 pairwise.nummeiose<-pairwise.t.test(anova.nummeiosepat$num.meiose.paterna, anova.nummeiosepat$group,
                  p.adjust.method = "BH")
 ```
+
+```r
+#plot scatter mendelian deviation vs parental
+dfDMAgeParental<-read.csv("dados_dm_age_parental.csv",header = TRUE,sep = ";",dec = ".")
+
+#control
+p.DM.Age.Parental.control<-ggplot(dfDMAgeParental, aes(x=Age_Control, y=MD_Control, shape=Parental_Control, colour= Parental_Case, fill=Parental_Case)) +
+                            geom_point(size = 3) + 
+                            facet_grid(. ~ Parental_Control) +
+                            theme(strip.text = element_text(face="bold", size=rel(1.5)),
+                            strip.background = element_rect(fill="lightblue", colour="black",
+                            size=1)) +
+                            scale_y_continuous(limits=c(0,1500),breaks = seq(0, 1500, by = 500)) +
+                            labs(
+                                x = "Parental Age - Control",
+                                y = "Number of Mendelian Deviation Parental - Control"            
+                            )
+#case
+p.DM.Age.Parental.case<-ggplot(dfDMAgeParental, aes(x=Age_Case, y=MD_Case, shape=Parental_Case, colour= Parental_Case, fill=Parental_Case)) +
+                            geom_point(size=3) +
+                            facet_grid(. ~ Parental_Case) +
+                            theme(strip.text = element_text(face="bold", size=rel(1.5)),
+                            strip.background = element_rect(fill="lightblue", colour="black",
+                            size=1)) +
+                            scale_y_continuous(limits=c(0,1500),breaks = seq(0, 1500, by = 500)) +
+                            labs(
+                                x = "Parental Age - Case",
+                                y = "Number of Mendelian Deviation Parental - Case"            
+                            )
+```
+```r
+
+
+```
+
 
 ```r
 library(cluster)
@@ -401,28 +404,6 @@ clusplot.age.alelo.mae<- clusplot(df.cls.age.alelo.mae, clust.age.alelo.mae$clus
 										shade=TRUE,
 										labels=5, 
 										lines=0)
-```
-```r
-library(plotly)
-infer.alelo.caso<-read.csv("num_inferencia_origem_caso_2.csv",header = TRUE,sep = ";",dec = ".")
-p.pie.infer.caso <- plot_ly(infer.alelo.caso, labels = ~Inference, values = ~Event, type = 'pie')
-p.pie.infer.caso <- p.pie.infer.caso %>% layout(title = 'Proportion of Inferences Made for Group Case',
-         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-infer.alelo.control<-read.csv("num_inferencia_origem_controle_2.csv",header = TRUE,sep = ";",dec = ".")
-colors <- c('rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)')
-p.pie.infer.control <- plot_ly(infer.alelo.control, labels = ~Inference, values = ~Event, type = 'pie',
-                                textposition = 'inside',
-                                textinfo = 'label+percent',
-                                insidetextfont = list(color = '#FFFFFF'),
-                                hoverinfo = 'text',
-                                marker = list(colors = colors,
-                                line = list(color = '#FFFFFF', width = 1)),
-                                #The 'pull' attribute can also be used to create space between the sectors
-                                showlegend = FALSE)
-p.pie.infer.control <- p.pie.infer.control %>% layout(title = 'Proportion of Inferences Made for Group Control',
-         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 ```
 
 ```r
@@ -521,21 +502,7 @@ pmatfracao+scale_color_brewer(palette="Dark2")
 ```
 
 ```r
-#regression linear: age parental VS Fraction Age P/M (fig 1; Gao)
-variant_fracao_group<-read.csv("variantes_sex_progenitor_ratio_group.csv",header = TRUE,sep = ";",dec = ".")
-group <- factor(variant_fracao_group$Group)
-pvarfracaogroup <- ggplot(variant_fracao_group, aes(x = AgeParental, y = RatioPM, shape=Group, colour= Group, fill=Group)) +
-    geom_point() +
-    stat_smooth(method = "lm", fill = "grey97", size = 2, alpha = 1, se = FALSE) +
-    stat_smooth(method = "lm", fill = "honeydew1", size = 2, alpha = 1, se = FALSE) +
-    scale_colour_manual(values = c("blue","orange"))    
-pvarfracaogroup +
-        scale_y_continuous(limits=c(0.5,1.75 ),breaks = seq(0.5, 1.75, by = 0.25)) +
-        labs(
-            x = "Paternal Age",
-            y = "Fractions of paternal in all phased mutations"            
-        )
-pvarfracao
+
 
 #regression poisson: age VS fraction Age P/M
 modelRegrPoisson<-glm(formula = Age ~ Fracao + Progenitor, family = poisson, data = variant_fracao)
@@ -568,6 +535,7 @@ p.var.age.md.case<-ggplot(variant_age_md, aes(Age_Case, MD_Case, shape=Parental_
 
 
 #plot ratio age VS ratio md (Figu 2B; Gao)
+
 ratio_age_md<-read.csv("ratio_age_md.csv",header = TRUE,sep = ";",dec = ".")
 rangeFMControl <- factor(ratio_age_md$RangeFM_Control)
 rangeMFControl <- factor(ratio_age_md$RangeMF_Control)
@@ -665,8 +633,7 @@ lm_mat<-lm(AgeMother ~ RatioMDPM, data = ratio_cel_md)
 lm_pat<-lm(AgeFather ~ RatioMDPM, data = ratio_cel_md)
 
 #plot MD VS Age with multiples regression linear
-  variant_sex_ratio<-read.csv("variantes_sex_progenitor_ratio.csv",header = TRUE,sep = ";",dec = ".")
-  p.var.sex.ratio<-ggplot(variant_sex_ratio, aes(AgeParental, RatioPM, colour=RangeRatio, fill=RangeRatio)) +
+p.var.sex.ratio<-ggplot(variant_sex_ratio, aes(AgeParental, RatioPM, colour=RangeRatio, fill=RangeRatio)) +
       geom_smooth(method="lm") +
       geom_point(size=3) +
       theme_bw() + 

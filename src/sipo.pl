@@ -300,7 +300,7 @@ while (my $fields = $csv->getline($data)) {
                             } 
                          }                     
                      } #if $call_base_father 'AA'
-                     
+                                          
                      elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                          if($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                             if ($tx_confidence_father >  $tx_confidence_mother) {               
@@ -1927,7 +1927,7 @@ while (my $fields = $csv->getline($data)) {
                              } #if $call_base_father 'AA'
                      
                              elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
-                                 if ($call_base_offspring eq 'AA') {
+                                if ($call_base_offspring eq 'AA') {
                                      say $fh_log $reg, $strMutacao2, $strMutacao12; $variante1;
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
