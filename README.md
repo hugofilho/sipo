@@ -36,7 +36,7 @@ After the discovery of the MD, SIPO was able to identify the origin of the de no
 
 | Regarding the Origin of the Parent  |  Nitrogen Base Mutation |  Case|
 |---|---|---|
-|   | Maternal or Paternal Origin |Ex: Paternal (AC)/Maternal (AA)/Offspring (CC). However, for some scenarios, it was not possible to objectively identify the origin. For these and similar cases, the authors identified that it was generated from inference without progenitor origin|
+|   | Maternal or Paternal Origin |Eg: Paternal (AC)/Maternal (AA)/Offspring (CC). However, for some scenarios, it was not possible to objectively identify the origin. For these and similar cases, the authors identified that it was generated from inference without progenitor origin|
 |   | Maternal Origin | E.g.: Paternal (AC)/Maternal (AA)/Offspring (CC). However, for some scenarios, it was possible to objectively identify the origin|
 |   | Paternal Origin | E.g.: Paternal (AA)/Maternal (GG)/Offspring (CG). However, for some scenarios, it was possible to objectively identify the origin|
 
