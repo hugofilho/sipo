@@ -10,6 +10,7 @@ use Class::Fields;
 #leader: Alexandre Caetano; Claudio da Silva; Divino Aparecido da Cruz
 #Versao: 16
 #Data: 25/07/2020
+#Data: 19/02/2023 - Tese: Juliana Ferreria
 #Include to variants
 
 my $layout = '';
@@ -1928,7 +1929,7 @@ while (my $fields = $csv->getline($data)) {
                      
                              elsif ($call_base_father eq 'AC' or $call_base_father eq 'CA' ) {
                                 if ($call_base_offspring eq 'AA') {
-                                     say $fh_log $reg, $strMutacao2, $strMutacao12; $variante1;
+                                     say $fh_log $reg, $strMutacao2, $strMutacao12, $variante1;
                                  }
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                      say $fh_log $reg, $strMutacao2, $strMutacao11, $variante3; 
