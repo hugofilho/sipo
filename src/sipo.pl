@@ -13,16 +13,19 @@ use Class::Fields;
 #Data: 30/11/2023 - Artigo Lorraynne & Peixoto
 #Include to variants
 
-my $layout = '';
-$layout=$ARGV[0];  
+#my $layout = '';
+#$layout=$ARGV[0];
+ 
 my $filename = '';
-$filename=$ARGV[1];
+# $filename=$ARGV[1];
+$filename='D:/particular/desenvolvimento/sipo/data_input/trio19_caso.txt';
 my $fileout = '';
-$fileout=$ARGV[2]; 
-if ($#ARGV != 2 ) {
-	print "usage: sipo require three arguments: <layout> <path_origin_file.txt> <path_output_file.csv>\n";
-	exit;
-}
+#$fileout=$ARGV[2]; 
+$fileout='D:/particular/desenvolvimento/sipo/data_output/output_trio19_caso.csv';
+#if ($#ARGV != 2 ) {
+#	print "usage: sipo require three arguments: <layout> <path_origin_file.txt> <path_output_file.csv>\n";
+#	exit;
+#}
 
 
 my $file = $filename or die "Need to get CSV file on the command line\n";
@@ -62,80 +65,56 @@ while (my $fields = $csv->getline($data)) {
   chomp $fields ;
   $fields =~ s/\s*#.*$//;
   
+    $position                 = $fields->[0];
+    $dbSNP                    = $fields->[1];
+    $call_base_father         = $fields->[2];
+    $call_base_mother         = $fields->[3]; 
+    $call_base_offspring      = $fields->[4];
+    $tx_confidence_father     = $fields->[5];
+    $tx_confidence_mother     = $fields->[6];
+    $tx_confidence_offspring  = $fields->[7];
+    $chromosome_id            = $fields->[8];
  
-  if ($layout == '1') { # To sequence: Offspring x Mother x Father 
-       $position                 = $fields->[1];
-       $dbSNP                    = $fields->[2];
-       $call_base_father         = $fields->[3];
-       $call_base_mother         = $fields->[4]; 
-       $call_base_offspring      = $fields->[5];
-       $tx_confidence_father     = $fields->[6];
-       $tx_confidence_mother     = $fields->[7];
-       $tx_confidence_offspring  = $fields->[8];
-       $chromosome_id            = $fields->[9];
+#  if ($layout == '1') { # To sequence: Offspring x Mother x Father 
+#       $position                 = $fields->[1];
+#       $dbSNP                    = $fields->[2];
+#       $call_base_father         = $fields->[3];
+#       $call_base_mother         = $fields->[4]; 
+#       $call_base_offspring      = $fields->[5];
+#       $tx_confidence_father     = $fields->[6];
+#       $tx_confidence_mother     = $fields->[7];
+#       $tx_confidence_offspring  = $fields->[8];
+#       $chromosome_id            = $fields->[9];
        
-  }elsif($layout == '2') { # To sequence: Offspring x Father x Mother 
-       $position                 = $fields->[1];
-       $dbSNP                    = $fields->[2];
-       $call_base_father         = $fields->[3];
-       $call_base_mother         = $fields->[4]; 
-       $call_base_offspring      = $fields->[5];
-       $tx_confidence_father     = $fields->[6];
-       $tx_confidence_mother     = $fields->[7];
-       $tx_confidence_offspring  = $fields->[8];
-       $chromosome_id            = $fields->[9];
-       
-  }elsif ($layout == '3') { # To sequence: Mother x Father x Offspring 
-      $position                 = $fields->[1];
-       $dbSNP                    = $fields->[2];
-       $call_base_father         = $fields->[3];
-       $call_base_mother         = $fields->[4]; 
-       $call_base_offspring      = $fields->[5];
-       $tx_confidence_father     = $fields->[6];
-       $tx_confidence_mother     = $fields->[7];
-       $tx_confidence_offspring  = $fields->[8];
-       $chromosome_id            = $fields->[9];
-       
-   } elsif ($layout == '4') { # To sequence: Mother x Offspring x Father
-       $position                 = $fields->[1];
-       $dbSNP                    = $fields->[2];
-       $call_base_father         = $fields->[3];
-       $call_base_mother         = $fields->[4]; 
-       $call_base_offspring      = $fields->[5];
-       $tx_confidence_father     = $fields->[6];
-       $tx_confidence_mother     = $fields->[7];
-       $tx_confidence_offspring  = $fields->[8];
-       $chromosome_id            = $fields->[9];
-       
-   } elsif ($layout == '5'){ # To sequence: Father x Offspring x Mother
-       $position                 = $fields->[1];
-       $dbSNP                    = $fields->[2];
-       $call_base_father         = $fields->[3];
-       $call_base_mother         = $fields->[4]; 
-       $call_base_offspring      = $fields->[5];
-       $tx_confidence_father     = $fields->[6];
-       $tx_confidence_mother     = $fields->[7];
-       $tx_confidence_offspring  = $fields->[8];
-       $chromosome_id            = $fields->[9];  
-       
-   } else {  # To sequence: Father x Mother x Offspring 
-       $position                 = $fields->[1];
-       $dbSNP                    = $fields->[2];
-       $call_base_father         = $fields->[3];
-       $call_base_mother         = $fields->[4]; 
-       $call_base_offspring      = $fields->[5];
-       $tx_confidence_father     = $fields->[6];
-       $tx_confidence_mother     = $fields->[7];
-       $tx_confidence_offspring  = $fields->[8];
-       $chromosome_id            = $fields->[9];
-   }
+#  }elsif($layout == '2') { # To sequence: Offspring x Father x Mother 
+#       $position                 = $fields->[1];
+#       $dbSNP                    = $fields->[2];
+#       $call_base_father         = $fields->[3];
+#       $call_base_mother         = $fields->[4]; 
+#       $call_base_offspring      = $fields->[5];
+#       $tx_confidence_father     = $fields->[6];
+#       $tx_confidence_mother     = $fields->[7];
+#       $tx_confidence_offspring  = $fields->[8];
+#       $chromosome_id            = $fields->[9];
+#       
+#    
+#   } else {  # To sequence: Father x Mother x Offspring 
+#       $position                 = $fields->[1];
+#       $dbSNP                    = $fields->[2];
+#       $call_base_father         = $fields->[3];
+#       $call_base_mother         = $fields->[4]; 
+#       $call_base_offspring      = $fields->[5];
+#       $tx_confidence_father     = $fields->[6];
+#       $tx_confidence_mother     = $fields->[7];
+#       $tx_confidence_offspring  = $fields->[8];
+#       $chromosome_id            = $fields->[9];
+#   }
    
   @fields = ($position, $dbSNP, $call_base_father,        
              $call_base_mother, $call_base_offspring,     
              $tx_confidence_father, $tx_confidence_mother,    
              $tx_confidence_offspring, $chromosome_id);
-  
-  
+    
    my $strMutacao1 = ",Mutation NB - Paternal or Maternal";   
    my $strMutacao2 = ",Mutation NB - Maternal Origin";
    my $strMutacao3 = ",Mutation NB - Paternal Origin";
@@ -157,7 +136,8 @@ while (my $fields = $csv->getline($data)) {
    my $variante12 = ",A>C";
    
    my $reg = '';
-   $reg = join(',',@fields);
+   $reg = join(',',@fields);  
+ 
    
    switch ($call_base_mother) {
           case 'AA' {if ($call_base_father eq 'AA') {          
@@ -1342,7 +1322,7 @@ while (my $fields = $csv->getline($data)) {
                             }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
                                 say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
                             }
-                         }                      
+                         }                                            
                          elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                              if ($tx_confidence_father >  $tx_confidence_mother) {               
                                 say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
