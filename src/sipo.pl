@@ -8,9 +8,9 @@ use Class::Fields;
 
 #@uthor: Hugo Leite
 #leader: Alexandre Caetano; Claudio da Silva; Divino Aparecido da Cruz
-#Versao: 16
+#Versao: 17
 #Data: 25/07/2020
-#Data: 19/02/2023 - Tese: Juliana Ferreria
+#Data: 30/11/2023 - Artigo Lorraynne & Peixoto
 #Include to variants
 
 my $layout = '';
@@ -32,21 +32,21 @@ my $csv = Text::CSV_XS->new({
  
  my @fields;
  
- my $probe_set_id = '';
- my $call_code_offspring = '';
+ # my $probe_set_id = '';
+ # my $call_code_offspring = '';
  my $tx_confidence_offspring = '';
- my $vl_signal_A_offspring = '';
- my $vl_signal_B_offspring = '';
+ # my $vl_signal_A_offspring = '';
+ # my $vl_signal_B_offspring = '';
  my $call_base_offspring = '';
- my $call_code_mother = '';
+ # my $call_code_mother = '';
  my $tx_confidence_mother = '';
- my $vl_signal_A_mother = '';
- my $vl_signal_B_mother = '';
+ # my $vl_signal_A_mother = '';
+ # my $vl_signal_B_mother = '';
  my $call_base_mother = '';
- my $call_code_father = '';
+ # my $call_code_father = '';
  my $tx_confidence_father = '';
- my $vl_signal_A_father = '';
- my $vl_signal_B_father = '';
+ # my $vl_signal_A_father = '';
+ # my $vl_signal_B_father = '';
  my $call_base_father = '';
  my $dbSNP = '';
  my $chromosome_id = '';
