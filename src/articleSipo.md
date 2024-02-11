@@ -1,5 +1,4 @@
 ﻿```r
-setwd("F:/doutorado/tese/artigo_grm/")
 dfDMAge<-read.csv("dataset_sipo_dm_age.csv",header = TRUE,sep = ";",dec = ".")
 dfDMAgeGroupA<-read.csv("dataset_sipo_dm_age_group_a.csv",header = TRUE,sep = ";",dec = ".")
 dfDMAgeGroupB<-read.csv("dataset_sipo_dm_age_group_b.csv",header = TRUE,sep = ";",dec = ".")
@@ -276,7 +275,6 @@ p<-ggplot(df_pc, aes(PC1, PC2, col=Group)) +
 ```
 
 ```r
-setwd('F:/doutorado/tese/artigo_grm/dados/Statistics A and B')
 library(plotly)
 dfAge<-read.csv("dataset_sipo_dm_age_group.csv",header = TRUE,sep = ";",dec = ".")
 # Boxplot Violin: Total of the mendelian deviation
