@@ -391,6 +391,119 @@ pTestDMT <- ggboxplot(
   ggtheme = theme_pubr(border = TRUE)
   ) +
   facet_wrap(~variables)
+
+
+# Box plot
+p.boxplot<-boxplot(dm.total ~ group, data = dfGrupoSipo,
+        xlab = "Group", ylab = "Desvian Mendelian Total",
+        frame = FALSE, col = c("#00AFBB", "#E7B800", "#FC4E07"))		  
+		
+library("gplots")
+plotmeans(dm.total ~ group, data = dfGrupoSipo, frame = FALSE,
+          xlab = "Group", ylab = "Desvian Mendelian Total",
+          main="Mean Plot with 95% CI") 		
+		  
+# Compute the analysis of variance
+res.aov.dm <- aov(dm.total ~ group, data = dfGrupoSipo)
+# Summary of the analysis
+summary(res.aov.dm)		  
+
+# Edit from here
+x <- which(names(dfGrupoSipo) == "group") # name of grouping variable
+y <- which(
+  names(dfGrupoSipo) == "dm.total" # names of variables to test
+)
+method1 <- "anova" # one of "anova" or "kruskal.test"
+method2 <- "t.test" # one of "wilcox.test" or "t.test"
+my_comparisons <- list(c("A", "B"), c("A", "C"), c("B", "C")) # comparisons for post-hoc tests
+# Edit until here
+
+
+# Edit at your own risk
+library(ggpubr)
+for (i in y) {
+  for (j in x) {
+    p <- ggboxplot(dfGrupoSipo,
+      x = colnames(dfGrupoSipo[j]), y = colnames(dfGrupoSipo[i]),
+      color = colnames(dfGrupoSipo[j]),
+      legend = "none",
+      palette = "npg",
+      add = "jitter"
+    )
+    print(
+      p + stat_compare_means(aes(label = paste0(..method.., ", p-value = ", ..p.format..)),
+        method = method1, label.y = max(dfGrupoSipo[, i], na.rm = TRUE)
+      )
+      + stat_compare_means(comparisons = my_comparisons, method = method2, label = "p.format") # remove if p-value of ANOVA or Kruskal-Wallis test >= alpha
+    )
+  }
+}
+
+# Edit from here
+x <- which(names(dfGrupoSipo) == "group") # name of grouping variable
+y <- which(
+  names(dfGrupoSipo) == "dm.inference" # names of variables to test
+)
+method1 <- "anova" # one of "anova" or "kruskal.test"
+method2 <- "t.test" # one of "wilcox.test" or "t.test"
+my_comparisons <- list(c("A", "B"), c("A", "C"), c("B", "C")) # comparisons for post-hoc tests
+# Edit until here
+
+
+# Edit at your own risk
+library(ggpubr)
+for (i in y) {
+  for (j in x) {
+    p <- ggboxplot(dfGrupoSipo,
+      x = colnames(dfGrupoSipo[j]), y = colnames(dfGrupoSipo[i]),
+      color = colnames(dfGrupoSipo[j]),
+      legend = "none",
+      palette = "npg",
+      add = "jitter"
+    )
+    print(
+      p + stat_compare_means(aes(label = paste0(..method.., ", p-value = ", ..p.format..)),
+        method = method1, label.y = max(dfGrupoSipo[, i], na.rm = TRUE)
+      )
+      + stat_compare_means(comparisons = my_comparisons, method = method2, label = "p.format") # remove if p-value of ANOVA or Kruskal-Wallis test >= alpha
+    )
+  }
+}
+```
+
+```r
+
+dfGrupoSipo<-read.csv("dataset_sipo_dm_age_group.csv",header = TRUE,sep = ";",dec = ".")
+# Edit from here
+x <- which(names(dfGrupoSipo) == "group") # name of grouping variable
+y <- which(
+  names(dfGrupoSipo) == "dm.no.inference" # names of variables to test
+)
+method1 <- "anova" # one of "anova" or "kruskal.test"
+method2 <- "t.test" # one of "wilcox.test" or "t.test"
+my_comparisons <- list(c("A", "B"), c("A", "C"), c("B", "C")) # comparisons for post-hoc tests
+# Edit until here
+
+
+# Edit at your own risk
+library(ggpubr)
+for (i in y) {
+  for (j in x) {
+    p <- ggboxplot(dfGrupoSipo,
+      x = colnames(dfGrupoSipo[j]), y = colnames(dfGrupoSipo[i]),
+      color = colnames(dfGrupoSipo[j]),
+      legend = "none",
+      palette = "npg",
+      add = "jitter"
+    )
+    print(
+      p + stat_compare_means(aes(label = paste0(..method.., ", p-value = ", ..p.format..)),
+        method = method1, label.y = max(dfGrupoSipo[, i], na.rm = TRUE)
+      )
+      + stat_compare_means(comparisons = my_comparisons, method = method2, label = "p.format") # remove if p-value of ANOVA or Kruskal-Wallis test >= alpha
+    )
+  }
+}
 # Add statistical test p-values
 stat.test.dm <- stat.test.dm %>% add_xy_position(x = "group")
 pTestDMT + stat_pvalue_manual(stat.test.dm, label = "p")
