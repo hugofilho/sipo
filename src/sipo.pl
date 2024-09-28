@@ -18,12 +18,12 @@ use Class::Fields;
  
 my $filename = '';
 # $filename=$ARGV[1];
-$filename='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\T6_Caso.txt';
+$filename='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\T8_Caso.txt';
 my $fileout = '';
 #$fileout=$ARGV[2]; 
 # $fileout='D:/particular/desenvolvimento/sipo/data_output/output_trio19_caso.csv';
 
-$fileout='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\output_trio6_caso.csv';
+$fileout='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\output_trio8_caso.csv';
 #if ($#ARGV != 2 ) {
 #	print "usage: sipo require three arguments: <layout> <path_origin_file.txt> <path_output_file.csv>\n";
 #	exit;
@@ -1948,10 +1948,7 @@ while (my $fields = $csv->getline($data)) {
                              elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                  if ($call_base_offspring eq 'AA') {
                                      say $fh_log $reg, $strMutacao2, $strMutacao13, $variante1;
-                                 }
-                                 elsif ($call_base_offspring eq 'AC' or $call_base_offspring eq 'CA') {
-                                     say $fh_log $reg, $strMutacao2, $strMutacao11, $variante7; 
-                                 }
+                                 }                                 
                                  elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                      say $fh_log $reg, $strMutacao2, $strMutacao12, $variante6; 
                                  }
