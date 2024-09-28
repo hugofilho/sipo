@@ -1948,8 +1948,8 @@ while (my $fields = $csv->getline($data)) {
                              elsif ($call_base_father eq 'AT' or $call_base_father eq 'TA' ) {
                                  if ($call_base_offspring eq 'AA') {
                                      say $fh_log $reg, $strMutacao2, $strMutacao13, $variante1;
-                                 }                                 
-                                 elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
+                                 }
+                                elsif($call_base_offspring eq 'AG' or $call_base_offspring eq 'GA') {
                                      say $fh_log $reg, $strMutacao2, $strMutacao12, $variante6; 
                                  }
                                  elsif($call_base_offspring eq 'AT' or $call_base_offspring eq 'TA') {
