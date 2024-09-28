@@ -8,9 +8,9 @@ use Class::Fields;
 
 #@uthor: Hugo Leite
 #leader: Alexandre Caetano; Claudio da Silva; Divino Aparecido da Cruz
-#Versao: 17
+#Versao: 18
 #Data: 25/07/2020
-#Data: 30/11/2023 - Artigo Lorraynne & Peixoto
+#Data: 26/09/2024 - Artigo Lorraynne & Peixoto
 #Include to variants
 
 #my $layout = '';
@@ -18,10 +18,12 @@ use Class::Fields;
  
 my $filename = '';
 # $filename=$ARGV[1];
-$filename='D:/particular/desenvolvimento/sipo/data_input/trio19_caso.txt';
+$filename='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\T6_Caso.txt';
 my $fileout = '';
 #$fileout=$ARGV[2]; 
-$fileout='D:/particular/desenvolvimento/sipo/data_output/output_trio19_caso.csv';
+# $fileout='D:/particular/desenvolvimento/sipo/data_output/output_trio19_caso.csv';
+
+$fileout='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\output_trio6_caso.csv';
 #if ($#ARGV != 2 ) {
 #	print "usage: sipo require three arguments: <layout> <path_origin_file.txt> <path_output_file.csv>\n";
 #	exit;
@@ -43,10 +45,14 @@ my $csv = Text::CSV_XS->new({
  my $call_base_father = '';
  my $call_base_mother = '';
  my $call_base_offspring = '';
+ my $s_father_gq = '';
+ my $s_mother_gq = '';
+ my $tx_confidence_offspring = '';
+ my $chromosome_id = ''; 
  my $tx_confidence_father = '';
  my $tx_confidence_mother = '';
- my $tx_confidence_offspring = '';
- my $chromosome_id = '';  
+ 
+  
  
  # my $vl_signal_A_offspring = '';
  # my $vl_signal_B_offspring = '';
@@ -70,10 +76,12 @@ while (my $fields = $csv->getline($data)) {
     $call_base_father         = $fields->[2];
     $call_base_mother         = $fields->[3]; 
     $call_base_offspring      = $fields->[4];
-    $tx_confidence_father     = $fields->[5];
-    $tx_confidence_mother     = $fields->[6];
+    $s_father_gq              = $fields->[5];
+    $s_mother_gq              = $fields->[6];
     $tx_confidence_offspring  = $fields->[7];
     $chromosome_id            = $fields->[8];
+    $tx_confidence_father     = $fields->[9];
+    $tx_confidence_mother     = $fields->[10];
  
 #  if ($layout == '1') { # To sequence: Offspring x Mother x Father 
 #       $position                 = $fields->[1];
