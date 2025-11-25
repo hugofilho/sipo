@@ -12,6 +12,7 @@ use Class::Fields;
 #Data: 25/07/2020
 #Data: 30/11/2023 - Artigo Lorraynne & Peixoto
 #Include to variants
+#24/11/2025 - corrigindo inconsistência
 
 my $layout = '';
 $layout=$ARGV[0];  
@@ -322,7 +323,7 @@ while (my $fields = $csv->getline($data)) {
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                            say $fh_log $reg, $strMutacao2, $strMutacao11, $variante12;
+                            say $fh_log $reg, $strMutacao2, $variante12;
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             say $fh_log $reg, $strMutacao2, $strMutacao11, $variante12, $variante10; 
@@ -3541,11 +3542,11 @@ while (my $fields = $csv->getline($data)) {
                                  }                          
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
