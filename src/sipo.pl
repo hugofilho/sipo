@@ -13,17 +13,20 @@ use Class::Fields;
 #Data: 26/09/2024 - Artigo Lorraynne & Peixoto
 #Include to variants
 
-#my $layout = '';
-#$layout=$ARGV[0];
+my $layout = '';
+$layout=$ARGV[0];
  
 my $filename = '';
-# $filename=$ARGV[1];
-$filename='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\T8_Caso.txt';
+   $filename=$ARGV[1];
+#$filename='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\T8_Caso.txt';
 my $fileout = '';
-#$fileout=$ARGV[2]; 
+$fileout=$ARGV[2]; 
 # $fileout='D:/particular/desenvolvimento/sipo/data_output/output_trio19_caso.csv';
-
-$fileout='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\output_trio8_caso.csv';
+if ($#ARGV != 2 ) {
+	print "usage: sipo require three arguments: <layout> <path_origin_file.txt> <path_output_file.csv>\n";
+	exit;
+}
+#$fileout='C:\Users\hg_fi\OneDrive\Pessoal\sipo\sipo_lorraynne\dados\txt\output_trio8_caso.csv';
 #if ($#ARGV != 2 ) {
 #	print "usage: sipo require three arguments: <layout> <path_origin_file.txt> <path_output_file.csv>\n";
 #	exit;
@@ -71,6 +74,7 @@ while (my $fields = $csv->getline($data)) {
   chomp $fields ;
   $fields =~ s/\s*#.*$//;
   
+  if ($layout == '1') { # To sequence: Father X Mother X Offspring   
     $position                 = $fields->[0];
     $dbSNP                    = $fields->[1];
     $call_base_father         = $fields->[2];
@@ -82,7 +86,7 @@ while (my $fields = $csv->getline($data)) {
     $chromosome_id            = $fields->[8];
     $tx_confidence_father     = $fields->[9];
     $tx_confidence_mother     = $fields->[10];
- 
+  }
 #  if ($layout == '1') { # To sequence: Offspring x Mother x Father 
 #       $position                 = $fields->[1];
 #       $dbSNP                    = $fields->[2];
@@ -252,7 +256,7 @@ while (my $fields = $csv->getline($data)) {
                             } 
                          }
                          elsif($call_base_offspring eq 'CC') {
-                            say $fh_log $reg, $strMutacao2, $strMutacao11, $variante12;
+                            say $fh_log $reg, $strMutacao2, $variante12;
                          }
                          elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                             say $fh_log $reg, $strMutacao2, $strMutacao11, $variante12, $variante10; 
@@ -3468,11 +3472,11 @@ while (my $fields = $csv->getline($data)) {
                                  }                          
                                  elsif($call_base_offspring eq 'GT' or $call_base_offspring eq 'TG') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     } 
                                  }    
                                  elsif($call_base_offspring eq 'TT') {
