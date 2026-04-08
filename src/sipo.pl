@@ -3407,11 +3407,11 @@ while (my $fields = $csv->getline($data)) {
                                  }
                                  elsif($call_base_offspring eq 'CG' or $call_base_offspring eq 'GC') {
                                     if ($tx_confidence_father >  $tx_confidence_mother) {               
-                                            say $fh_log $reg, $strMutacao2, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao2, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father <  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao3, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao3, $strMutacao12, $strMutacao21;
                                     }elsif ($tx_confidence_father ==  $tx_confidence_mother) {
-                                            say $fh_log $reg, $strMutacao1, $strMutacao11, $strMutacao12, $strMutacao21;
+                                            say $fh_log $reg, $strMutacao1, $strMutacao12, $strMutacao21;
                                     }
                                  }
                                  elsif($call_base_offspring eq 'CT' or $call_base_offspring eq 'TC') {
